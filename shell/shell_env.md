@@ -41,7 +41,7 @@
 1. /etc/profile：这是系统整体的配置，你最好不要修改这个文件；
 1. ~/.bash_profile 或 ~/.bash_login 或 ~/.profile：属于使用者个人配置，你要改自己的数据，就写入这里！
 
-#### /etc/profile (login shell 才会读)
+#### /etc/profile
 这个文件配置的变量主要有：
 - PATH：会依据 UID 决定 PATH 变量要不要含有 sbin 的系统命令目录；
 - MAIL：依据账号配置好使用者的 mailbox 到 /var/spool/mail/账号名；
@@ -54,11 +54,12 @@
 - /etc/profile.d/\*.sh：其实这是个目录内的众多文件！只要在 /etc/profile.d/ 这个目录内且扩展名为 .sh ，另外，使用者能够具有 r 的权限， 那么该文件就会被 /etc/profile 加载进来。在 CentOS 5.x 中，这个目录底下的文件规范了 bash 操作接口的颜色、 语系、ll 与 ls 命令的命令别名、vi 的命令别名、which 的命令别名等等。如果你需要帮所有使用者配置一些共享的命令别名时， 可以在这个目录底下自行创建扩展名为 .sh 的文件，并将所需要的数据写入即可喔！
 - /etc/sysconfig/i18n：这个文件是由 /etc/profile.d/lang.sh 加载进来的！这也是我们决定 bash 默认使用何种语系的重要配置文件！ 文件里最重要的就是 LANG 这个变量的配置啦！
 
-#### ~/.bash_profile (login shell 才会读)
+#### ~/.bash_profile
 在 login shell 的 bash 环境中，所读取的个人偏好配置文件其实主要有三个，依序分别是：
 1. ~/.bash_profile
 1. ~/.bash_login
 1. ~/.profile
+
 其实 bash 的 login shell 配置只会读取上面三个文件的其中一个，而读取的顺序则是依照上面的顺序。也就是说，如果 ~/.bash_profile 存在，那么其他两个文件不论有无存在，都不会被读取。 如果 ~/.bash_profile 不存在才会去读取 ~/.bash_login，而前两者都不存在才会读取 ~/.profile 。 
 ```
 
@@ -77,7 +78,7 @@ unset USERNAME
 ```
 
 ### non-login shell 仅会读取 ~/.bashrc
-#### ~/.bashrc (non-login shell 会读)
+#### ~/.bashrc
 ```
 [root@www ~]# cat ~/.bashrc
 # .bashrc
