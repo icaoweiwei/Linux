@@ -76,12 +76,8 @@ export PATH
 unset USERNAME
 ```
 
-### `source` ：读入环境配置文件的命令
-利用 `source` 或小数点 (`.`) 都可以将配置文件的内容读进来目前的 shell 环境中！
-
-
-### ~/.bashrc (non-login shell 会读)
-当你取得 non-login shell 时，该 bash 配置文件仅会读取 ~/.bashrc 而已。
+### non-login shell 仅会读取 ~/.bashrc
+#### ~/.bashrc (non-login shell 会读)
 ```
 [root@www ~]# cat ~/.bashrc
 # .bashrc
@@ -106,6 +102,9 @@ fi
 -bash-3.2$
 ```
 这是正常的，因为你并没有呼叫 /etc/bashrc 来规范 PS1 变量！而且这样的情况也不会影响你的 bash 使用。 如果你想要将命令提示字符捉回来，那么可以复制 /etc/skel/.bashrc 到你的家目录，再修订一下你所想要的内容，并使用 source 去调用 ~/.bashrc ，那你的命令提示字符就会回来啦！
+
+### `source` ：读入环境配置文件的命令
+利用 `source` 或小数点 (`.`) 都可以将配置文件的内容读进来目前的 shell 环境中！
 
 ### 其他相关配置文件
 #### /etc/man.config
